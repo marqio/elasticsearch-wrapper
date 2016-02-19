@@ -1,7 +1,0 @@
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.throttle.EsThrottleFactory] [INFO] - Start to load [csiem-ES] configuration file...
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.config.AbstractConfig] [INFO] - WriteExecutor int
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.config.AbstractConfig] [INFO] - WriteExecutor int completed
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.config.AbstractConfig] [INFO] - SearchExecutor int
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.config.AbstractConfig] [INFO] - SearchExecutor int completed
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.throttle.EsThrottleFactory] [INFO] - Congratulations!Load [csiem-ES] configuration file completed sucessfully!
-2015-12-15-16-30 [pool-1-thread-1] [com.baidu.siem.throttle.EsThrottleFactory] [INFO] - Start to load [SSD-TEST-ES] configuration file...
