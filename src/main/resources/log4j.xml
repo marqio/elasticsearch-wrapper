@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ - Copyright 1999-2011 baidu-siem Group.
+ -  
+ - Licensed under the Apache License, Version 2.0 (the "License");
+ - you may not use this file except in compliance with the License.
+ - You may obtain a copy of the License at
+ -  
+ -      http://www.apache.org/licenses/LICENSE-2.0
+ -  
+ - Unless required by applicable law or agreed to in writing, software
+ - distributed under the License is distributed on an "AS IS" BASIS,
+ - WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ - See the License for the specific language governing permissions and
+ - limitations under the License.
+-->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true">
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss z}] %t %5p %c{2}: %m%n"/>
+        </layout>
+    </appender>
+    <appender name="slowLogAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${defaultLogDir}/slowLog.log"></param>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>
+        </layout>
+    </appender>
+    <!--<appender name="monitorAppender" class="org.apache.log4j.DailyRollingFileAppender">-->
+        <!--<param name="File" value="${defaultLogDir}/monitor.log"></param>-->
+        <!--<param name="Append" value="false"/>-->
+        <!--<layout class="org.apache.log4j.PatternLayout">-->
+            <!--<param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>-->
+        <!--</layout>-->
+    <!--</appender>-->
+    <appender name="infoAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${defaultLogDir}/info.log"></param>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+            <param name="LevelMax" value="INFO"/>
+        </filter>
+    </appender>
+    <appender name="warnAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${defaultLogDir}/warn.log"></param>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+            <param name="LevelMax" value="WARN"/>
+        </filter>
+    </appender>
+    <appender name="errorAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${defaultLogDir}/error.log"></param>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+            <param name="LevelMax" value="ERROR"/>
+        </filter>
+    </appender>
+    <appender name="errorRequest" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="${defaultLogDir}/errorRequest.log"></param>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{yyyy-MM-dd-HH-mm} [%t] [%c] [%p] - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="slowLogger" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="slowLogAppender"/>
+    </logger>
+    <!--<logger name="monitorLogger" additivity="false">-->
+        <!--<level value="info"/>-->
+        <!--<appender-ref ref="monitorAppender"/>-->
+    <!--</logger>-->
+    <logger name="errorLogger" additivity="false">
+        <level value="error"/>
+        <appender-ref ref="errorRequest"/>
+    </logger>
+    <root>
+        <level value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="infoAppender"/>
+        <appender-ref ref="warnAppender"/>
+        <appender-ref ref="errorAppender"/>
+    </root>
+</log4j:configuration>
